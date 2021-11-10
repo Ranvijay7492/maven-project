@@ -8,7 +8,7 @@ stages
     
 
     stage('Code build')
-    { steps { withMaven(maven: 'Local_Maven', jdk: 'Local_JDK') {
+    { steps { withMaven(jdk: 'Local_JDK', maven: 'Local_Maven') {
         sh 'mvn clean package'                                          // Provide Maven command
 
 } } }

@@ -7,7 +7,7 @@ stages
   { steps {  git branch: 'master', https://github.com/Ranvijay7492/maven-project' }}
 
   stage('code build')
-  { steps { withMaven(jdk: 'local_JDK', maven: 'local_mavan') 
+  { steps {  withMaven(jdk: 'local_JDK', maven: 'local_mavan')
            { sh 'mvn clean package'}}}
            
   stage('deploy to dev')

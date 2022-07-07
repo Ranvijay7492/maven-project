@@ -3,14 +3,23 @@ pipeline
 agent any
 stages
 {
-    stage('scm checkout')
-    { steps { git branch: 'master', url: 'https://github.com/Ranvijay7492/maven-project' } }
-    
+  stage('scm checkout')
+  { steps {  git branch: 'master', https://github.com/Ranvijay7492/maven-project'  } }
 
-    stage('Code build')
-    { steps { withMaven(jdk: 'Local_JDK', maven: 'Local_Maven') {
-        sh 'mvn clean package'                                          // Provide Maven command
+  stage('code build')
+  { steps {  withMaven(jdk: 'local_JDK', maven: 'local_mavan') {
+      sh 'mvn clean package'                    // provide maven command
 
 } } }
+
+
+  stage('deploy to dev')
+    { steps {
+       sshagent([['CICD_Tomcat']) {
+       sh 'scp -o StrictHostKeyChecking=no */target/*.war  ec2-user@172.31.44.60:/var/lib/tomcat/webapps'
+    }
+            }
+         }
+
 }
 }

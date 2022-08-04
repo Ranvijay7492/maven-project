@@ -15,9 +15,9 @@ pipeline{
         stage('Docker build and push'){
             steps{
                 withDockerRegistry(credentialsId: 'DockerHub', url: 'https://index.docker.io/v1/') {
-                    sh 'docker build -t Ranvijay7492/maven-web:latest .'
+                    sh 'docker build -t ranvijay7492/maven-web:latest .'
                     sh 'docker images'
-                    sh 'docker push Ranvijay7492/maven-web:latest'
+                    sh 'docker push ranvijay7492/maven-web:latest'
                 }         
             }
         }

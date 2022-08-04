@@ -8,7 +8,7 @@ pipeline{
         }
         stage('code build'){
             steps{
-                withMaven(jdk: 'local_JDK', maven: 'local_mavan')
+                withMaven(jdk: 'LocalJDK', maven: 'LocalMaven')
                 { sh 'mvn clean package'}
             }
         }
